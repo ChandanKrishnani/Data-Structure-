@@ -1,0 +1,89 @@
+#include<iostream>
+#define max 10
+using namespace std;
+int stack[max],top;
+void pop()
+{
+    if(top==0)
+    {
+        cout<<"Undeflow";
+    }
+    else
+    {
+
+        top=top-1;
+    }
+}
+void push()
+{
+
+    if(top==max)
+    {
+        cout<<"Overflow";
+    }
+    else
+    {
+        cout<<"Enter the number";
+        int item;
+        cin>>item;
+        stack[top]=item;
+        top=top+1;
+    }
+
+}
+void disp()
+{
+    if(top==0)
+    {
+        cout<<"There is noting";
+
+    }
+    else
+    {
+
+
+    for(int i=0;i<top;i++)
+    {
+        cout<<"Numbers are "<<stack[i];
+
+    }
+    }
+}
+int main()
+{
+
+    while(1)
+    {
+        cout<<"1.pop"<<endl;
+        cout<<"2.Push"<<endl;
+        cout<<"3.disp"<<endl;
+        cout<<"4.to exit"<<endl;
+        int n;
+        cin>>n;
+        switch(n)
+        {
+        case 1:
+            {
+                pop();
+                break;
+
+            }
+        case 2:
+            {
+                push();
+                break;
+            }
+        case 3:
+            {
+                disp();
+                break;
+            }
+        case 4:
+            {
+
+                return 0;
+            }
+
+        }
+    }
+}
