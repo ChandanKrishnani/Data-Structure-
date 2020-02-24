@@ -1,0 +1,111 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+typedef struct stk
+{
+    int info;
+    struct stk *link;
+}node;
+node *top;
+void push()
+{
+    node *ptr;
+    ptr=(node*)malloc(sizeof(node));
+    cout<<"Enter the number";
+    cin>>ptr->info;
+    if(top==NULL)
+    {
+        top=ptr;
+        ptr->link=NULL;
+    }
+    else{
+
+        ptr->link=top;
+        top=ptr;
+
+    }
+
+}
+void pop()
+{
+    node *ptr;
+    ptr=top;
+    if(top==NULL)
+    {
+        cout<<"Under Flow";
+
+    }
+    else
+    {
+        if(top->link==NULL)
+        {
+            free(ptr);
+            top=NULL;
+
+        }
+        else
+        {
+            top=ptr->link;
+            free(ptr);
+
+        }
+
+    }
+}
+void traverse()
+{
+
+ if(top==NULL)
+ {
+     cout<<"There is nothing";
+ }
+ else{
+    node *ptr;
+    ptr=top;
+    while(ptr!=NULL)
+    {
+
+        cout<<endl<<"Here it is "<<ptr->info;
+        ptr=ptr->link;
+    }
+
+ }
+}
+int main()
+{
+
+    while(1)
+    {
+        cout<<"1.pop"<<endl;
+        cout<<"2.Push"<<endl;
+        cout<<"3.disp"<<endl;
+        cout<<"4.to exit"<<endl;
+        int n;
+        cin>>n;
+        switch(n)
+        {
+        case 1:
+            {
+                pop();
+                break;
+
+            }
+        case 2:
+            {
+                push();
+                break;
+            }
+        case 3:
+            {
+                traverse();
+                break;
+            }
+        case 4:
+            {
+
+                return 0;
+            }
+
+        }
+    }
+}
