@@ -1,0 +1,125 @@
+#include<iostream.h>
+#include<conio.h>
+#define max 10
+int stack[max],top,;
+int push()
+	{
+	 if(top==max)
+	 {
+	  cout<<"Over flow";
+	  return 0;
+	 }
+	 int item;
+	 cout<<"Enter the Number ";
+	 cin>>item;
+	 top=top+1;
+	 stack[top]=item;
+	 return 1;
+ }
+int pop()
+{
+  if(top==0)
+  {
+   cout<<"Undeflow ";
+   return 0;
+  }
+  top=top-1;
+  return 1;
+}
+int disp()
+{
+ if(top==0)
+ {
+   cout<<"No stack exist";
+   return 0;
+ }
+ else
+ {
+  int n=1;
+  while(n-1!=top)
+  {
+    cout<<"Element is "<<stack[n]<<endl;
+    n++;
+  }
+  return 1;
+ }
+}
+
+int main()
+{
+ int n,j;
+ clrscr();
+ cout<<"Enter the number of elements";
+ cin>>n;
+ while(n!=0)
+ {
+   j=push();
+	    if(j==0)
+	    {
+		   cout<<endl<<"Task was unsucessfull"<<endl;
+	    }
+	   else
+	  {
+		    cout<<endl<<"complited"<<endl;
+	  }
+   n--;
+ }
+
+ while(1)
+ {
+   cout<<"1.TO push()"<<endl;
+   cout<<"2.TO pop()"<<endl;
+   cout<<"3.Quick sort"<<endl;
+   cout<<"4.Print the stack"<<endl;
+   cout<<"5.To exit:";
+   cin>>n;
+   switch(n)
+   {
+    case 1:
+    {
+	 j=push();
+	    if(j==0)
+	    {
+		   cout<<endl<<"Task was unsucessfull"<<endl;
+	    }
+	   else
+	  {
+		    cout<<endl<<"conplited"<<endl;
+	  }
+	  break;
+    }
+    case 2:
+    {
+    j=pop();
+	    if(j==0)
+	    {
+		   cout<<endl<<"Task was unsucessfull"<<endl;
+	    }
+	   else
+	  {
+		    cout<<endl<<"conplited"<<endl;
+	  }
+     break;
+    }
+    case 4:
+    {
+      j=disp();
+	    if(j==0)
+	    {
+		   cout<<endl<<"Task was unsucessfull"<<endl;
+	    }
+	   else
+	  {
+		    cout<<endl<<"conplited"<<endl;
+	  }
+     break;
+    }
+
+    case 5:
+    {
+     return 0;
+    }
+   }
+ }
+}
+
