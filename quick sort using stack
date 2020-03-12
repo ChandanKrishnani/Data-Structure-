@@ -123,3 +123,107 @@ int main()
  }
 }
 
+
+#include<iostream>
+#define max 10
+int lower[max],upper[max],top,beg,en;
+using namespace std;
+
+void quicksort(arr,n)
+{
+
+	if(n>1)
+	{
+		top=top+1;
+		lower[top]=1;
+		upper[top]=n;
+
+	}
+	while(lower[top]!=0)
+	{
+		beg=lower[top];
+		en=upper[top];
+		top=top-1;
+		loc=quick(arr,beg,en);
+		if(beg<loc-1)
+		{
+			top=top+1;
+			lower[top]=beg;
+			upper[top]=loc-1;
+
+		}
+		if(loc+1<en)
+		{
+			top=top+1;
+			lower[top]=loc+1;
+			upper[top]=en;
+		}
+
+	}
+
+
+}
+int quick(a,beg,en)
+{
+
+
+	int left,right,loc,n;
+	left=loc=beg;
+	right=en;
+	while(arr[loc]<=arr[right]&&loc!=right)
+	{
+		right=right-1;
+
+	}
+	if(loc==right)
+	{
+		return loc;
+	}
+	if(arr[loc]>arr[right])
+	{
+		n=arr[loc];
+	      arr[loc]=arr[right];
+	      arr[right]=n;
+	      loc=right;
+	}
+	while(arr[left]<=arr[loc]&&left!=loc)
+	{
+		left=left+1;
+	}
+	if(loc==left)
+	{
+		return loc;
+	}
+	if(arr[left]>arr[loc])
+	{
+		n=arr[loc];
+	      arr[loc]=arr[left];
+	      arr[left]=n;
+	      loc=left;
+	}
+	return 0;
+
+}
+
+int main()
+{
+	int n,i,arr[10];
+
+ cout<<"Enter the number of elements";
+ cin>>n;
+ for(i=1;i<=n;i++)
+ {
+ 	cout<<"Enter the number";
+ 	cin>>arr[i];
+
+
+ }
+ qicksort(arr,n);
+ for(i=0;i<=n;i++)
+ {
+ 	cout<<"Element is "<<arr[i];
+ }
+
+}
+
+
