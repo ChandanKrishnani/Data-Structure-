@@ -1,4 +1,3 @@
-//Program to implement priority queue
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
@@ -46,6 +45,29 @@ void push()
     }
 
 }
+void pop()
+{
+    node *ptr;
+    char n;
+    ptr=head;
+    cout<<"Are you sure you want to pop (y/n)";
+    cin>>n;
+    if(n=='y')
+    {
+       if(head==NULL)
+       {
+           cout<<"It is not possible ";
+
+       }
+       else
+       {
+           head=ptr->link;
+           free(ptr);
+       }
+
+
+    }
+}
 void disp()
 {
     node *ptr;
@@ -79,6 +101,7 @@ int main()
             }
         case 2:
             {
+                pop();
 
                 break;
             }
