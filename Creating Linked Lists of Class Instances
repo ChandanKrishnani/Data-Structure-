@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+typedef struct link
+{
+    int data;
+    struct link *next;
+
+}node;
+node *head=NULL;
+void print()
+{
+
+    for(node *p=head;p!=NULL;p=p->next)
+    {
+        cout<<p->data<<" ";
+    }
+    cout<<endl;
+}
+void add(int a,node **pp)
+{
+    node *temp =new node;
+    temp->data=a;
+    temp->next=*pp;
+    *pp=temp;
+}
+node **sch(int v,node **pp)
+{
+    while((*pp) != NULL && (*pp)->data!=v)
+    {
+        pp=&((*pp)->next);
+    }
+    return pp;
+}
+
+void dele()
+{
+    while(head!=NULL)
+    {
+        node *temp =head;
+        head=head->next;
+        cout<<"Deleting "<<temp->data<<endl;
+        delete temp;
+
+    }
+}
+
+int main()
+{
+    for(int i=1;i<10;i=i+2)
+    {
+        add(i,&head);
+
+    }
+    print();
+    add(8,sch(7,&head));
+    print();
+    dele();
+
+
+}
+
