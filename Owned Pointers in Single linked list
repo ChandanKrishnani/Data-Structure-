@@ -1,0 +1,110 @@
+#include<iostream>
+using namespace std;
+struct item
+{
+    int value;
+    item* next;
+
+};
+class list
+{
+    item* head;
+   public:
+       list():head(NULL){}
+       ~list();
+       void print();
+       void add(int v);
+       item* find(int v);
+
+};
+list::~list()
+{
+    while(head!=NULL)
+    {
+        item *p =head;
+        head=head->next;
+        cout<<"Deleting"<<p->value<<endl;
+        delete p;
+    }
+}
+void list::print()
+{
+    for(item *p=head; p!=NULL;p=p->next)
+    {
+        cout<<p->value<<"  ";
+
+    }
+    cout<<endl;
+
+
+}
+void list::add(int v)
+{
+
+    item* p=new item;
+    p->value=v;
+    p->next=head;
+    head=p;
+
+
+}
+item* list::find(int v)
+{
+    for(item *p =head;p!=NULL;p=p->next)
+    {
+        if(p->value==v)
+        {
+            return p;
+
+        }
+    }
+    return NULL;
+}
+
+
+int main()
+{
+    int n,a;
+    list l;
+    while(1)
+    {
+        cout<<endl<<"1. To add";
+        cout<<endl<<"2.To find";
+        cout<<endl<<"3.TO exit ";
+        cin>>n;
+        switch(n)
+        {
+        case 1:
+            {
+                cout<<"Enter the number";
+                cin>>a;
+                l.add(a);
+                break;
+
+            }
+        case 2:
+            {
+                cout<<"Enter the number";
+                cin>>a;
+                item *p= l.find(a);
+                if(p!=NULL)
+                {
+                    cout<<"NUmber found";
+
+                }
+                else
+                {
+                    cout<<"Number not found";
+                }
+                break;
+            }
+        case 3:
+            {
+                return 0;
+            }
+        }
+    }
+
+
+
+}
